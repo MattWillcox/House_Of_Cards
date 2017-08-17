@@ -33,7 +33,7 @@ module.exports = (knex) => {
       .from("users")
       .where("name", req.body.name)
       .then((results) => {
-        res.json(results));
+        res.json(results);
       });
   });
 
