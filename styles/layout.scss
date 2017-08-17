@@ -1,7 +1,166 @@
-body {
-  background-color: #EEE;
+main {
+  background-color: #699;
+  height: 600px;
+}
 
-  h1 {
-    color: #244751;
+body > main > p {
+  background-color: lighten( blue, 40% )
+
+}
+
+@import 'https://fonts.googleapis.com/css?family=Slabo+27px';
+$black: #666 !default;
+$red: tomato !default;
+$white: #ffffff !default;
+$blue: deepskyblue !default;
+$yellow: khaki !default;
+$ranks: 'A' '2' '3' '4' '5' '6' '7' '8' '9' '10' 'J' 'Q' 'K';
+$suits:
+  /* Diamonds */ (bg:$white, fg:$red, symbol:'\2666', empty: '\2662', idx: 0),
+  /* Spades */ (bg:$white, fg:$black, symbol:'\2660', empty: '\2664', idx: 1),
+  /* Hearts */ (bg:$red, fg:$white, symbol:'\2665', empty: '\2661', idx: 2),
+  /* Clubs */ (bg:$black, fg:$white, symbol:'\2663', empty: '\2667', idx: 3);
+
+@function bg-gradient($color, $rot: 202.5deg){
+  $color1: rgba($color, .15);
+  $color2: rgba($color, .25);
+  $color3: rgba($color, .35);
+  @return linear-gradient($rot,
+    transparent 0%, transparent 60%,
+    $color1 60%, $color1 65%,
+    transparent 65%, transparent 70%,
+    $color2 70%, $color2 80%,
+    transparent 80%, transparent 85%,
+    $color3 85%, $color3 90%);
+}
+
+%card-size{
+  width: 5em;
+  height: 7em;
+  display:inline-block;
+  position: relative;
+  margin-left: 80px;
+}
+%card-shape {
+  font-family: 'Slabo 27px', serif;
+  border: solid 1px $black;
+  border-radius: .5em;
+  @extend %card-size;
+}
+.card-front {
+  @extend %card-shape;
+  &::before, &::after {
+    font-size: 2.5em;
+    position:absolute;
+    font-weight: bold;
+  }
+  &::before {
+    bottom: 0;
+    left: .1em;
+  }
+  &::after {
+    right:.2em;
+  }
+  @for $i from 1 through 13 {
+    $symbol: nth($ranks, $i);
+    &[data-rank-idx='#{$i - 1}']{
+      &::after{
+        content: $symbol;
+      }
+    }
+  }
+  @each $suit-data in $suits{
+    $suit-color: map-get($suit-data, 'fg');
+    &[data-suit-idx='#{map-get($suit-data, 'idx')}']{
+    /* #{map-get($suit-data, 'idx')} */
+      background-color: map-get($suit-data, 'bg');
+      background-image: bg-gradient($suit-color);
+      &::after, &::before {
+        color: $suit-color;
+      }
+      &::before {
+        content:map-get($suit-data, 'symbol');
+      }
+    }
   }
 }
+
+.card-back {
+  @extend %card-shape;
+  background-color: white;
+  background-image: bg-gradient($red), bg-gradient($black, 22.5deg);
+}
+
+.empty-card {
+  @extend %card-shape;
+  border-width: .15em;
+  border-style: dotted;
+  &::before, &::after {
+    position:absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    font-size: 2.5em;
+    color: rgba($black, .25);
+    vertical-align:middle;
+  }
+  &::after {
+    transform: rotate(180deg);
+  }
+  @each $suit-data in $suits{
+    &[data-suit-idx="#{map-get($suit-data, "idx")}"]{
+      &::before, &::after {
+        content: map-get($suit-data, "empty");
+      }
+    }
+  }
+}
+@mixin set-shadow($color){
+  box-shadow: 0 0 .5em .25em $color, inset 0 0 .5em .25em $color;
+}
+.selected-card {
+  @include set-shadow($blue);
+}
+
+.highlight-card {
+  @include set-shadow($yellow);
+}
+
+body {
+  background: #f5f5f5;
+}
+
+.playing-card{
+  @extend %card-size;
+  font-size: 2em;
+  transform-style: preserve-3d;
+  margin-right: 10px;
+  .card-back{
+    transform:rotateY(180deg)
+  }
+  .card-front, .card-back{
+    position:absolute;
+    transition: transform 5s;
+    backface-visibility: hidden;
+  }
+
+  &.is-flipped{
+    .card-front{
+      transform: rotateY(180deg);
+    }
+    .card-back{
+      transform: rotateY(360deg);
+    }
+  }
+}
+
+.userButtonRow1{
+  margin-left: 45%;
+}
+
+.userButtonRow2, .userButtonRow3, .userButtonRow4{
+  margin-left: 45%;
+  margin-top: 20px;
+}
+
