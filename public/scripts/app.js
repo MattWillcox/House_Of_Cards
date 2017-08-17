@@ -1,12 +1,4 @@
 $(() => {
-  // $.ajax({
-  //   method: "GET",
-  //   url: "/api/users"
-  // }).done((users) => {
-  //   for(user of users) {
-  //     $("<div>").text(user.name).appendTo($("body"));
-  //   }
-  // });
 
   const cards = document.querySelectorAll('.playing-card');
   cards.forEach(card => {
@@ -62,6 +54,8 @@ $(() => {
 
 
 
+=======
+>>>>>>> 8b9e0300208ab3c6ed718322c35dcc277a33a6d3
 });
 
 

@@ -14,14 +14,27 @@ module.exports = (knex) => {
       .from("users")
       .then((results) => {
         res.json(results);
-    });
+      });
+  });
+
+  router.post("/register", (req, res) => {
+    // knex.select('name').from('users').where('name', req.body.name)
+    // .then((results) =>
+    knex('users')
+      .insert({name: req.body.name})
+      .then(() => res.status(200).send(req.body.name))
+      .catch(function(error) { console.error(error); });
   });
 
   router.post("/", (req, res) => {
-    knex('users')
-      .insert({name: `"${req.body.name}"`})
-      .then(() => res.status(200).send(req.body.name))
-      .catch(function(error) { console.error(error); });
+
+    knex
+      .select("name")
+      .from("users")
+      .where("name", req.body.name)
+      .then((results) => {
+        res.json(results));
+      });
   });
 
   return router;
