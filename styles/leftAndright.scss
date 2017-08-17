@@ -7,6 +7,7 @@
   height: 355px;
   background-color: #33FFBE;
   float: left;
+  visibility: hidden;
 }
 
 .left .userInformation {
@@ -27,13 +28,14 @@
   height: 355px;
   background-color: #FF33F9;
   float: right;
+  visibility: hidden;
 }
 
 .right .Game1 {
 
 
-  margin-top: 80px;
-  padding-bottom: 80px;
+  margin-top: 40px;
+
 }
 
 .right .Game2 {
