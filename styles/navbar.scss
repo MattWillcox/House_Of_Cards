@@ -1,0 +1,31 @@
+
+$base-color: #AD141E;
+
+
+#navbar {
+
+  background-color: $base-color;
+  height:7em;
+  border: 2px round black;
+
+}
+
+.logo {
+  width:10%;
+  height:7em;
+  float:right;
+}
+
+#navbar .buttonNav {
+
+height: 50px;
+float: right;
+
+}
+
+#navbar .title {
+
+  font-size: 60px;
+  color: pink;
+  right-margin: auto;
+}
