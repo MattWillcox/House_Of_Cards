@@ -42,7 +42,7 @@ $(() => {
     var windowSizeArray = [ "width=200,height=200",
                             "width=300,height=400,scrollbars=yes" ];
                    var url = $(this).attr("href");
-                   var windowName = "popUp2";//$(this).attr("name");
+                   var windowName = "popUp2"+counter2;//$(this).attr("name");
                    var windowSize = windowSizeArray[$(this).attr("rel")];
                     counter2 = counter2+1;
                    window.open(url, windowName, windowSize);
