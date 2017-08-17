@@ -11,39 +11,43 @@ $(() => {
   });
 
   $('.userButtonRow1').click(function(){
-    $('.userButtonRow2').hide();
-    $('.userButtonRow3').hide();
-    $('.userButtonRow4').hide();
-    $('.playing-card').hide();
-    $('.userButtonRow1').hide();
+    $('.userButtonRow2').slideUp("slow");
+    $('.userButtonRow3').slideUp("slow");
+    $('.userButtonRow4').slideUp("slow");
+    $('.playing-card').slideUp("slow");
+    $('.userButtonRow1').slideUp("slow");
     $(".left").css('visibility', 'visible');
     $(".right").css('visibility', 'visible');
   });
   var counter =0;
-  var counter2 = 0;
-  $('.Game1').click(function(event){
-
-
+  var counter2 =0;
+  $('#Game1').click(function(event){
+    event.preventDefault();
 
     var windowSizeArray = [ "width=200,height=200",
                             "width=300,height=400,scrollbars=yes" ];
-                   var url = $(this).attr("href");
+                   var url = "http://www.google.com";
                    var windowName = "popUp"+counter;//$(this).attr("name");
                    var windowSize = windowSizeArray[$(this).attr("rel")];
-                    counter = counter+1;
+                   counter = counter + 1;
                    window.open(url, windowName, windowSize);
-      event.preventDefault();
+                   console.log(counter);
+                   event.preventDefault();
+
+
 
   });
 
-   $('.Game2').click(function(event){
+   $('#Game2').click(function(event){
 
 
 
     var windowSizeArray = [ "width=200,height=200",
                             "width=300,height=400,scrollbars=yes" ];
-                   var url = $(this).attr("href");
-                   var windowName = "popUp2"+counter2;//$(this).attr("name");
+
+
+                   var url = "/goofspiel"
+                   var windowName = "popUp2"+ counter2;//$(this).attr("name");
                    var windowSize = windowSizeArray[$(this).attr("rel")];
                     counter2 = counter2+1;
                    window.open(url, windowName, windowSize);

@@ -51,6 +51,7 @@ app.get("/", (req, res) => {
 });
 
 
+
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
@@ -70,6 +71,14 @@ io.on('connection', function(client) {
       console.log(state);
       client.emit('update state', state);
     });
+
+app.get("/goofspiel", (req, res) => {
+  res.render("goofspiel")
+});
+
+app.listen(PORT, () => {
+  console.log("Example app listening on port " + PORT);
+
 });
 
 // var myEl = document.getElementById('.Game1');
