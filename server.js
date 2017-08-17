@@ -1,5 +1,8 @@
 "use strict";
 
+
+
+
 require('dotenv').config();
 
 const PORT        = process.env.PORT || 8080;
@@ -8,14 +11,18 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
-
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const http        = require('http').createServer(app);
+const io          = require('socket.io')(http);
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
+
+
+http.listen(8080, '0.0.0.0');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -43,6 +50,32 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
+
+app.get('/', function (req, res) {
+  res.sendfile(__dirname + '/index.html');
 });
+
+io.on('connection', function(client) {
+    console.log('Client connected...');
+
+    const state = {
+      player1Hand: [1, 2, 3, 4],
+      player2Hand: [1, 5, 6, 9]
+    };
+
+    client.on('play card', function(data) {
+      const move = JSON.parse(data);
+
+      state['player' + move.player + 'Hand'].splice(move.index, 1);
+      console.log(state);
+      client.emit('update state', state);
+    });
+});
+
+// var myEl = document.getElementById('.Game1');
+
+// myEl.addEventListener('click', function() {
+//     alert('Hello world');
+// }, false);
+
+
