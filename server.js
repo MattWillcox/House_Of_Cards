@@ -71,20 +71,13 @@ io.on('connection', function(client) {
       console.log(state);
       client.emit('update state', state);
     });
+});
 
 app.get("/goofspiel", (req, res) => {
   res.render("goofspiel")
 });
 
-app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
+// app.listen(PORT, () => {
+//   console.log("Example app listening on port " + PORT);
 
-});
-
-// var myEl = document.getElementById('.Game1');
-
-// myEl.addEventListener('click', function() {
-//     alert('Hello world');
-// }, false);
-
-
+// });
