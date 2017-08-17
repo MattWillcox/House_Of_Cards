@@ -1,14 +1,13 @@
 $(() => {
 
-  // $.ajax({
-  //   method: "GET",
-  //   url: "/api/users"
-  // }).done((users) => {
-  //   for(user of users) {
-  //     $("<div>").text(user.name).appendTo($("body"));
-  //   }
-  // });
-
+  $.ajax({
+    method: "GET",
+    url: "/api/users/"
+  }).done((users) => {
+    for(var i = 0; i < users.length; i++){
+      console.log(users[i].name, "Rank: " + (i+1));
+    }
+  });
 });
 
 
