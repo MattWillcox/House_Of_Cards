@@ -15,9 +15,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script type='text/javascript'>
       var socket = io.connect('http://localhost:8080');
-      socket.on('connect', function(data) {
-        socket.emit('join', 'Hello World from client');
+
+      socket.on('update state', function(data) {
+        updateState(data);
       });
+
+      function playCard(index) {
+        socket.emit('play card', JSON.stringify({
+          index: index,
+          player: 1
+        }));
+      }
+
+      function updateState(data) {
+        // update ui based on data object
+        //$().appendChild();
+        console.log(data);
+      }
+
+
+
     </script>
   </head>
 
@@ -30,20 +47,20 @@
     <main>
 
       <p>
-        <span class="playing-card">
+        <span class="playing-card" onclick="playCard(0)">
           <span class="card-front" data-suit-idx="0" data-rank-idx="0"></span>
           <span class="card-back"></span>
         </span>
-        <span class="playing-card" style='perspective:300px;'>
+        <span class="playing-card" onclick="playCard(1)" style='perspective:300px;'>
           <span class="card-front" data-suit-idx="1" data-rank-idx="0"></span>
           <span class="card-back" ></span>
         </span>
-      <span class="playing-card" style='perspective: 300px;'>
+      <span class="playing-card" onclick="playCard(2)" style='perspective: 300px;'>
         <span class="card-front" data-suit-idx="2" data-rank-idx="0"></span>
         <span class="card-back"></span>
       </span>
 
-      <span class="playing-card" style='perspective: 1000px;'>
+      <span class="playing-card" onclick="playCard(3)" style='perspective: 1000px;'>
         <span class="card-front" data-suit-idx="3" data-rank-idx="0"></span>
         <span class="card-back"></span>
         </span>

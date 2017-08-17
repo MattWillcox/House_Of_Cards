@@ -58,9 +58,24 @@ app.get('/', function (req, res) {
 io.on('connection', function(client) {
     console.log('Client connected...');
 
-    client.on('join', function(data) {
-        console.log(data);
+    const state = {
+      player1Hand: [1, 2, 3, 4],
+      player2Hand: [1, 5, 6, 9]
+    };
+
+    client.on('play card', function(data) {
+      const move = JSON.parse(data);
+
+      state['player' + move.player + 'Hand'].splice(move.index, 1);
+      console.log(state);
+      client.emit('update state', state);
     });
 });
+
+// var myEl = document.getElementById('.Game1');
+
+// myEl.addEventListener('click', function() {
+//     alert('Hello world');
+// }, false);
 
 
