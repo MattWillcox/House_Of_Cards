@@ -16,27 +16,6 @@
     <script type='text/javascript'>
       var socket = io.connect('http://localhost:8080');
 
-      socket.emit('identify', JSON.stringify({user_id: 1, game_id: 2}));    // TODO: hardcoding is both bad, and fucking useless
-
-      socket.on('update state', function(data) {
-        updateState(data);
-      });
-
-      function playCard(index) {
-        socket.emit('play card', JSON.stringify({
-          index: index,
-          player: 1
-        }));
-      }
-
-      function updateState(data) {
-        // update ui based on data object
-        //$().appendChild();
-        console.log(data);
-      }
-
-
-
     </script>
 
   </head>

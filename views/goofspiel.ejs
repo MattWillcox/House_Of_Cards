@@ -17,21 +17,6 @@
 
     var socket = io.connect('http://localhost:8080/');
 
-    socket.on('news', function (data) {
-      console.log("newsdata", data);
-      socket.emit('my other event', { my: 'data' });
-    });
-
-
-
-    socket.on('connect', function () {
-      console.log("CONNECT!!!", socket.connected);
-    });
-
-    socket.on('disconnect', function() {
-      console.log("Socket disconnected.  We are desolate and bereft.");
-    });
-
     function cardPlay(index) {
       console.log("cardplay.  emitting to server.");
       socket.emit('cardplay', JSON.stringify({

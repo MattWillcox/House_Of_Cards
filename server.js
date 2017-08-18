@@ -21,7 +21,7 @@ const io          = require('socket.io')(http);
 // Seperated Routes for each Resource
 const sockets = require("./lib/sockets")
 const usersRoutes = require("./routes/users");
-const goofspeilRoutes = require("./routes/goofspeilRoutes")
+
 
 http.listen(8080, '0.0.0.0');
 
@@ -46,7 +46,7 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex,io));
 
-app.use("/goofspiel", goofspeilRoutes(knex));
+
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
