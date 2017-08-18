@@ -3,12 +3,8 @@
 const express = require('express');
 const router  = express.Router();
 const bodyParser = require("body-parser");
-const cookieSession = require('cookie-session');
 
 router.use(bodyParser.urlencoded({extended: true}));
-router.use(cookieSession({
-  secret: 'Wing got a wing'
-}));
 
 module.exports = (knex) => {
 
@@ -16,16 +12,11 @@ module.exports = (knex) => {
     knex
       .select("*")
       .from("users")
+      .where("Whenbuttoncl") // ????
       .orderBy("wins")
       .then((results) => {
         res.json(results);
       });
-  });
-
-  router.post('/', (req, res) => {
-    req.session.userId = users[userId]
-
-
   });
 
   router.post("/register", (req, res) => {
