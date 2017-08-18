@@ -19,6 +19,7 @@ const http        = require('http').createServer(app);
 const io          = require('socket.io')(http);
 
 // Seperated Routes for each Resource
+const sockets = require("./lib/sockets")
 const usersRoutes = require("./routes/users");
 
 
@@ -43,7 +44,7 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
+app.use("/api/users", usersRoutes(knex,io));
 
 // Home page
 app.get("/", (req, res) => {
@@ -56,28 +57,8 @@ app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
 
-io.on('connection', function(client) {
-    console.log('Client connected...');
-
-    const state = {
-      player1Hand: [1, 2, 3, 4],
-      player2Hand: [1, 5, 6, 9]
-    };
-
-    client.on('play card', function(data) {
-      const move = JSON.parse(data);
-
-      state['player' + move.player + 'Hand'].splice(move.index, 1);
-      console.log(state);
-      client.emit('update state', state);
-    });
-});
+sockets(io, knex);
 
 app.get("/goofspiel", (req, res) => {
   res.render("goofspiel")
 });
-
-// app.listen(PORT, () => {
-//   console.log("Example app listening on port " + PORT);
-
-// });

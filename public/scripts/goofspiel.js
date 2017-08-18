@@ -1,6 +1,6 @@
-$(() => {
+// $(() => {
 
-$(".clickable").click(function() {
-    $(this).hide();
-  });
-});
+// $(".clickable").click(function() {
+//     $(this).hide();
+//   });
+// });

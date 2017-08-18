@@ -12,6 +12,28 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/goofspiel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script type='text/javascript'>
+      var socket = io.connect('http://localhost:8080');
+
+      socket.on('update state', function(data) {
+        updateState(data);
+      });
+
+      function cardPlay(index) {
+        socket.emit('GOP card play', JSON.stringify({
+          index: index,
+          player: 1
+        }));
+      }
+
+      function updateState(data) {
+        // update ui based on data object
+        //$().appendChild();
+        console.log(data);
+      }
+
+    </script>
   </head>
 
   <body>
@@ -39,19 +61,19 @@
         <div class="card stack"></div>
       </div>
       <div class="userCards">
-        <div class="card ace hearts clickable"></div>
-        <div class="card two hearts clickable"></div>
-        <div class="card three hearts clickable"></div>
-        <div class="card four hearts clickable"></div>
-        <div class="card five hearts clickable"></div>
-        <div class="card six hearts clickable"></div>
-        <div class="card seven hearts clickable"></div>
-        <div class="card eight hearts clickable"></div>
-        <div class="card nine hearts clickable"></div>
-        <div class="card ten hearts clickable"></div>
-        <div class="card jack hearts clickable"></div>
-        <div class="card queen hearts clickable"></div>
-        <div class="card king hearts clickable"></div>
+        <div class="card ace hearts clickable" onclick="cardPlay(0)"></div>
+        <div class="card two hearts clickable" onclick="cardPlay(1)"></div>
+        <div class="card three hearts clickable" onclick="cardPlay(2)"></div>
+        <div class="card four hearts clickable" onclick="cardPlay(3)"></div>
+        <div class="card five hearts clickable" onclick="cardPlay(4)"></div>
+        <div class="card six hearts clickable" onclick="cardPlay(5)"></div>
+        <div class="card seven hearts clickable" onclick="cardPlay(6)"></div>
+        <div class="card eight hearts clickable" onclick="cardPlay(7)"></div>
+        <div class="card nine hearts clickable" onclick="cardPlay(8)"></div>
+        <div class="card ten hearts clickable" onclick="cardPlay(9)"></div>
+        <div class="card jack hearts clickable" onclick="cardPlay(10)"></div>
+        <div class="card queen hearts clickable" onclick="cardPlay(11)"></div>
+        <div class="card king hearts clickable" onclick="cardPlay(12)"></div>
       </div>
 
     </main>
