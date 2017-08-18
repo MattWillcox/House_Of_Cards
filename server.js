@@ -17,6 +17,7 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const http        = require('http').createServer(app);
 const io          = require('socket.io')(http);
+const cookieSession = require("cookie-session");
 
 // Seperated Routes for each Resource
 const sockets = require("./lib/sockets")
@@ -32,6 +33,19 @@ app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['derpyFRS'],
+  })
+);
+
+var users = {
+  '1': {
+    id: '1',
+    username: 'derp',
+    password: 'derp'
+  }
+}
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -52,7 +66,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-
+// have user id1 --> set a cookie using cookieparser to the id --> everytime
 
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');

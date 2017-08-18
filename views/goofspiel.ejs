@@ -13,51 +13,7 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/goofspiel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-    <script type='text/javascript'>
 
-    var socket = io.connect('http://localhost:8080/');
-
-    function cardPlay(index) {
-      console.log("cardplay.  emitting to server.");
-      socket.emit('cardplay', JSON.stringify({
-        index: index,
-        player: 1
-      }));
-    }
-
-    socket.on('update state', function(data) {
-      var state = JSON.parse(data);
-      console.log("server says new state is", state);
-      renderCardFaces(state.p1Hand);        // TODO: not always p1hand!!  maybe I'm not p1!
-    });
-
-    function updateState(data) {
-      // update ui based on data object
-      //$().appendChild();
-      console.log(data);
-    }
-
-    function renderCardFaces(myHand){
-      var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
-      for (let i = 0; i < 13; i++) {
-        var cardId = '#mine' + i;
-        var card = $(cardId);
-        function sendThisCard() {
-          cardPlay(i);
-        }
-        card.off('click');    // NOTE: if we ever need a second click handler on this, this line might be bad news
-        if (myHand[i]) {
-          card.removeClass('back');
-          card.addClass('hearts clickable ' + frontClasses[i]);
-          card.on('click', sendThisCard);
-        } else {
-          card.addClass('back');
-          card.removeClass('hearts clickable ' + frontClasses[i]);
-        }
-      }
-    }
-
-    </script>
   </head>
 
   <body>
@@ -79,9 +35,6 @@
           <div id="mine<%= i %>" class="card back"> </div>
         <% } %>
       </div>
-
-
-      <script> renderCardFaces([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]); </script>
     </main>
   </body>
 </html>
