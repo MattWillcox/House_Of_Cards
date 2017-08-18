@@ -14,24 +14,63 @@
     <script type="text/javascript" src="/scripts/goofspiel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script type='text/javascript'>
-      var socket = io.connect('http://localhost:8080');
 
-      socket.on('update state', function(data) {
-        updateState(data);
-      });
+    var socket = io.connect('http://localhost:8080/');
 
-      function cardPlay(index) {
-        socket.emit('GOP card play', JSON.stringify({
-          index: index,
-          player: 1
-        }));
+    socket.on('news', function (data) {
+      console.log("newsdata", data);
+      socket.emit('my other event', { my: 'data' });
+    });
+
+
+
+    socket.on('connect', function () {
+      console.log("CONNECT!!!", socket.connected);
+    });
+
+    socket.on('disconnect', function() {
+      console.log("Socket disconnected.  We are desolate and bereft.");
+    });
+
+    function cardPlay(index) {
+      console.log("cardplay.  emitting to server.");
+      socket.emit('cardplay', JSON.stringify({
+        index: index,
+        player: 1
+      }));
+    }
+
+    socket.on('update state', function(data) {
+      var state = JSON.parse(data);
+      console.log("server says new state is", state);
+      renderCardFaces(state.p1Hand);        // TODO: not always p1hand!!  maybe I'm not p1!
+    });
+
+    function updateState(data) {
+      // update ui based on data object
+      //$().appendChild();
+      console.log(data);
+    }
+
+    function renderCardFaces(myHand){
+      var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
+      for (let i = 0; i < 13; i++) {
+        var cardId = '#mine' + i;
+        var card = $(cardId);
+        function sendThisCard() {
+          cardPlay(i);
+        }
+        card.off('click');    // NOTE: if we ever need a second click handler on this, this line might be bad news
+        if (myHand[i]) {
+          card.removeClass('back');
+          card.addClass('hearts clickable ' + frontClasses[i]);
+          card.on('click', sendThisCard);
+        } else {
+          card.addClass('back');
+          card.removeClass('hearts clickable ' + frontClasses[i]);
+        }
       }
-
-      function updateState(data) {
-        // update ui based on data object
-        //$().appendChild();
-        console.log(data);
-      }
+    }
 
     </script>
   </head>
@@ -43,39 +82,21 @@
     </nav>
     <main>
       <div class="enemyCards">
-        <div class="card back"></div>
-        <div class="card back"></div>
-        <div class="card back"></div>
-        <div class="card back"></div>
-        <div class="card back"></div>
-        <div class="card back"></div>
-        <div class="card back"></div>
-        <div class="card back"></div>
-        <div class="card back"></div>
-        <div class="card back"></div>
-        <div class="card back"></div>
-        <div class="card back"></div>
-        <div class="card back"></div>
+        <% for (var i = 0; i < 13; i++) { %>
+          <div class="card back"> </div>
+        <% } %>
       </div>
       <div class="stackCards">
         <div class="card stack"></div>
       </div>
       <div class="userCards">
-        <div class="card ace hearts clickable" onclick="cardPlay(0)"></div>
-        <div class="card two hearts clickable" onclick="cardPlay(1)"></div>
-        <div class="card three hearts clickable" onclick="cardPlay(2)"></div>
-        <div class="card four hearts clickable" onclick="cardPlay(3)"></div>
-        <div class="card five hearts clickable" onclick="cardPlay(4)"></div>
-        <div class="card six hearts clickable" onclick="cardPlay(5)"></div>
-        <div class="card seven hearts clickable" onclick="cardPlay(6)"></div>
-        <div class="card eight hearts clickable" onclick="cardPlay(7)"></div>
-        <div class="card nine hearts clickable" onclick="cardPlay(8)"></div>
-        <div class="card ten hearts clickable" onclick="cardPlay(9)"></div>
-        <div class="card jack hearts clickable" onclick="cardPlay(10)"></div>
-        <div class="card queen hearts clickable" onclick="cardPlay(11)"></div>
-        <div class="card king hearts clickable" onclick="cardPlay(12)"></div>
+        <% for (var i = 0; i < 13; i++) { %>
+          <div id="mine<%= i %>" class="card back"> </div>
+        <% } %>
       </div>
 
+
+      <script> renderCardFaces([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]); </script>
     </main>
   </body>
 </html>
