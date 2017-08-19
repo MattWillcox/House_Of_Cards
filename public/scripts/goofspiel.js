@@ -55,6 +55,10 @@
         }
     });
 
+    socket.on('result', function(state){
+      $.post('/gameResult', {player1: 1, player2: 2, winner: state});
+    })
+
     socket.on('update state', function(data) {
       var state = JSON.parse(data);
       console.log("server says new state is", state);

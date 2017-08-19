@@ -55,6 +55,16 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.post('/gameResult', (req, res) => {
+  req.body.player1;
+  req.body.player2;
+  req.body.winner;
+  knex('archive')
+    .insert({player1_id: req.body.player1, player2_id: req.body.player2, winner: req.body.winner})
+    .then(() =>
+      res.status(200).send());
+});
+
 app.post("/login", (req, res) => {
   res.cookie("userId", req.body.userId);
   res.end();
