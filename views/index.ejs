@@ -65,16 +65,16 @@
       </div>
 
       <section class = "userButtonRow1">
-        <button type="button" class="btn btn-primary">USER 1</button>
+        <form method="POST" action="/login">
+          <input type="hidden" value="1" name="userId">
+          <button id="btn-user-1" type="submit" class="btn btn-primary">USER 1</button>
+        </form>
       </section>
       <section class = "userButtonRow2">
-        <button type="button" class="btn btn-primary">USER 2</button>
-      </section>
-      <section class = "userButtonRow3">
-        <button type="button" class="btn btn-primary">USER 3</button>
-      </section>
-      <section class = "userButtonRow4">
-        <button type="button" class="btn btn-primary">USER 4</button>
+        <form method="POST" action="/login">
+          <input type="hidden" value="2" name="userId">
+          <button id="btn-user-2" type="submit" class="btn btn-primary">USER 2</button>
+        </form>
       </section>
 
     </main>

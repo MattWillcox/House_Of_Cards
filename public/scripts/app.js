@@ -10,12 +10,58 @@ $(() => {
     });
   });
 
+  $('button#btn-user-1').click(function(e){
+    e.preventDefault();
+
+    var userId = $(this).siblings("input").val();
+    $.ajax({
+      url: "/login",
+      type: "POST",
+      dataType: 'json',
+      data: { userId: userId },
+      success: function( data ) {
+        console.log('Submitted');
+      },
+      error   : function( xhr, err ) {
+        console.log('Error');
+      }
+    })
+  })
+
+  $('button#btn-user-2').click(function(e){
+    e.preventDefault();
+
+    var userId = $(this).siblings("input").val();
+    $.ajax({
+      url: "/login",
+      type: "POST",
+      dataType: 'json',
+      data: { userId: userId },
+      success: function( data ) {
+        console.log('Submitted');
+      },
+      error   : function( xhr, err ) {
+        console.log('Error');
+      }
+    })
+  })
+
   $('.userButtonRow1').click(function(){
     $('.userButtonRow2').slideUp("slow");
     $('.userButtonRow3').slideUp("slow");
     $('.userButtonRow4').slideUp("slow");
     $('.playing-card').slideUp("slow");
     $('.userButtonRow1').slideUp("slow");
+    $(".left").css('visibility', 'visible');
+    $(".right").css('visibility', 'visible');
+  });
+
+   $('.userButtonRow2').click(function(){
+    $('.userButtonRow1').slideUp("slow");
+    $('.userButtonRow3').slideUp("slow");
+    $('.userButtonRow4').slideUp("slow");
+    $('.playing-card').slideUp("slow");
+    $('.userButtonRow2').slideUp("slow");
     $(".left").css('visibility', 'visible');
     $(".right").css('visibility', 'visible');
   });

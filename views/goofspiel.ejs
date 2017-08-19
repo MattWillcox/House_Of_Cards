@@ -16,19 +16,24 @@
     <script type='text/javascript'>
 
     var socket = io.connect('http://localhost:8080/');
-
+    var playerNum = Number(/userId=(\d+)/.exec(document.cookie)[1]);
     function cardPlay(index) {
       console.log("cardplay.  emitting to server.");
       socket.emit('cardplay', JSON.stringify({
         index: index,
-        player: 1
+        cookies: document.cookie
       }));
     }
 
     socket.on('update state', function(data) {
       var state = JSON.parse(data);
       console.log("server says new state is", state);
-      renderCardFaces(state.p1Hand);        // TODO: not always p1hand!!  maybe I'm not p1!
+
+      if (playerNum === 1) {
+        renderCardFaces(state.p1Hand);
+      } else {
+        renderCardFaces(state.p2Hand);
+    }
     });
 
     function updateState(data) {

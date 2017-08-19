@@ -22,6 +22,9 @@ const io          = require('socket.io')(http);
 const sockets = require("./lib/sockets")
 const usersRoutes = require("./routes/users");
 
+// Cookies
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 http.listen(8080, '0.0.0.0');
 
@@ -52,7 +55,10 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-
+app.post("/login", (req, res) => {
+  res.cookie("userId", req.body.userId);
+  res.end();
+});
 
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
@@ -61,5 +67,6 @@ app.get('/', function (req, res) {
 sockets(io, knex);
 
 app.get("/goofspiel", (req, res) => {
+  console.log(req.cookies);
   res.render("goofspiel")
 });
