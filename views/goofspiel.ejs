@@ -22,6 +22,7 @@
         <section class="title">House Of Cards</section>
     </nav>
     <main>
+      <div class="turnButton">Make a move</div>
       <div class="enemyCards">
         <% for (var i = 0; i < 13; i++) { %>
           <div class="card back"> </div>
@@ -35,6 +36,10 @@
         <% for (var i = 0; i < 13; i++) { %>
           <div id="mine<%= i %>" class="card back"> </div>
         <% } %>
+      </div>
+      <div class="scoreboard">
+        <div class="userScore">user : NUMBER</div>
+        <div class="opponentScore">opponent: NUMBER</div>
       </div>
 
     </main>

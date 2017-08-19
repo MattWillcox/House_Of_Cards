@@ -14,15 +14,53 @@
       }));
     }
     socket.on('load', function(state) {
+      console.log("rohit on load event");
           var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
       var state = JSON.parse(state);
+       $('.card.stack').empty();
       $('<div>').addClass('card spades clickable ' + frontClasses[state.prizeCard - 1])
       .appendTo('.card.stack');
+    });
+
+    socket.on('updatePrizeCard' , function(state){
+
+      console.log("in updatePrizeCard");
+      var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
+      var state = JSON.parse(state);
+      $('.card.stack').empty();
+      $('<div>').addClass('card spades clickable ' + frontClasses[state.prizeCard - 1])
+      .appendTo('.card.stack');
+
+      $('.userScore').text("Player 1:" + state.p1Score)
+      $('.opponentScore').text("Player 2:" + state.p2Score)
+
+    });
+
+    socket.on('gameOver', function(state){
+      var state = JSON.parse(state);
+      $('.scoreboard').empty();
+      if (state.p1Score > state.p2Score){
+        $('<div>').addClass('p1Winner').text("P1 WINS CONGRATS")
+        .appendTo('.scoreboard');
+      } if ( state.p2Score > state.p1Score){
+        $('<div>').addClass('p2Winner').text("P2 WINS CONGRATS")
+        .appendTo('.scoreboard');
+      } if ( state.p1Score == state.p2Score){
+        $('<div>').addClass('TIE').text("TIED")
+        .appendTo('.scoreboard');
+      };
     });
 
     socket.on('update state', function(data) {
       var state = JSON.parse(data);
       console.log("server says new state is", state);
+
+    socket.on('yourTurn', function(data){
+
+      $('.turnButton').empty();
+      $('<div>').addClass('makeMove').text(data)
+      .appendTo('.turnButton')
+    });
 
     function countNulls(p1, p2) {
       let p1cards = 0;
