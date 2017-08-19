@@ -18,6 +18,8 @@
     var socket = io.connect('http://localhost:8080/');
     var playerNum = Number(/userId=(\d+)/.exec(document.cookie)[1]);
 
+
+
     function cardPlay(index) {
       console.log("cardplay.  emitting to server.");
       socket.emit('cardplay', JSON.stringify({
@@ -25,6 +27,12 @@
         cookies: document.cookie
       }));
     }
+    socket.on('load', function(state) {
+          var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
+      var state = JSON.parse(state);
+      $('<div>').addClass('card spades clickable ' + frontClasses[state.prizeCard])
+      .appendTo('.card.stack');
+    });
 
     socket.on('update state', function(data) {
       var state = JSON.parse(data);
@@ -137,6 +145,7 @@
       <div class="stackCards">
         <div class="card stack"></div>
       </div>
+      <div class="prizeCard"></div>
       <div class="userCards">
         <% for (var i = 0; i < 13; i++) { %>
           <div id="mine<%= i %>" class="card back"> </div>
