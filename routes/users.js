@@ -1,4 +1,4 @@
-"use strict";
+  "use strict";
 
 const express = require('express');
 const router  = express.Router();
@@ -23,9 +23,8 @@ module.exports = (knex) => {
   });
 
   router.post('/', (req, res) => {
-    req.session.userId = users[userId]
-
-
+    let winner = req.body.winner;
+    let loser = req.body.loser;
   });
 
   router.post("/register", (req, res) => {
