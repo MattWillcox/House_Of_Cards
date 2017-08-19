@@ -1,6 +1,7 @@
-// $(() => {
+$(() => {
 
-// $(".clickable").click(function() {
-//     $(this).hide();
-//   });
-// });
+ $('#deleteCookie').click(function() {
+        $.cookie('1', null);
+        displayMessage("Cookie 'test' has been deleted.");
+      });
+}

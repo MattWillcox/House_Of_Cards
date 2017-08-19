@@ -2,45 +2,69 @@
 
 
 .left {
-
-  width: 570px;
-  height: 355px;
-  background-color: #33FFBE;
-  float: left;
-  visibility: hidden;
+ width: 570px;
+ height: 355px;
+ background-color: white;
+ float: left;
+ visibility: hidden;
 }
 
 .left .userInformation {
-
-  margin-top: 80px;
-  padding-bottom: 80px;
+ margin-top: 80px;
+ padding-bottom: 80px;
+ visibility: hidden;
 }
 
 .left .whosOnline {
-
-  margin-top: 80px;
-  margin-bottom: 70px;
+ margin-top: 80px;
+ margin-bottom: 70px;
 }
 
 .right {
-
-  width: 570px;
-  height: 355px;
-  background-color: #FF33F9;
-  float: right;
-  visibility: hidden;
+ width: 570px;
+ height: 355px;
+ background-color: white;
+ float: right;
+ visibility: hidden;
 }
 
 .right .Game1 {
-
-
-  margin-top: 40px;
-
+ margin-top: 40px;
 }
 
 .right .Game2 {
+ margin-top: 80px;
+ margin-bottom: 70px;
+}
 
+.userInformationHead {
 
-  margin-top: 80px;
-  margin-bottom: 70px;
+ margin-top: 30px;
+ border :2px groove;
+ background-color: orange;
+
+}
+
+.userInformationBody {
+
+ border :2px groove;
+ background-color: red;
+ margin-bottom: 30px;
+ height: 120px;
+}
+
+.whosOnlineHead {
+
+ margin-top: 30px;
+ border :2px groove;
+ background-color: pink;
+
+}
+
+.whosOnlineBody {
+
+ border :2px groove;
+ background-color: lightblue;
+ margin-bottom: 30px;
+ height: 120px;
 }

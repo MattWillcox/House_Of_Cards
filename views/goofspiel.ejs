@@ -29,11 +29,15 @@
       var state = JSON.parse(data);
       console.log("server says new state is", state);
 
-      if (playerNum === 1) {
+
+
+      if (playerNum === 1 ) {
         renderCardFaces(state.p1Hand);
-      } else {
+
+      } else  {
         renderCardFaces(state.p2Hand);
     }
+
     });
 
     function updateState(data) {
@@ -70,6 +74,7 @@
         <img class="logo" src="/images/cards.png" alt="Cards" >
         <section class="title">House Of Cards</section>
     </nav>
+    <button class ="reset">Clear Array</button>
     <main>
       <div class="enemyCards">
         <% for (var i = 0; i < 13; i++) { %>
