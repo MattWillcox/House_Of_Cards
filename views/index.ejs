@@ -1,82 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Welcome to House Of Cards</title>
+ <head>
+   <title>Welcome to House Of Cards</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/leftAndright.css" type="text/css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+   <link rel="stylesheet" href="/styles/leftAndright.css" type="text/css" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-    <script type='text/javascript'>
-      var socket = io.connect('http://localhost:8080');
+   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+   <script type="text/javascript" src="/scripts/app.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+   <script type='text/javascript'>
+     var socket = io.connect('http://localhost:8080');
 
-    </script>
+   </script>
 
-  </head>
+ </head>
 
-  <body>
-    <nav id="navbar">
-        <img class="logo" src="/images/cards.png" alt="Cards" >
-        <section class="title">House Of Cards</section>
-    </nav>
+ <body>
+   <nav id="navbar">
+       <img class="logo" src="/images/cards.png" alt="Cards" >
+       <section class="title">House Of Cards</section>
+   </nav>
 
-    <main>
+   <main>
 
-      <p>
-        <span class="playing-card" onclick="playCard(0)">
-          <span class="card-front" data-suit-idx="0" data-rank-idx="0"></span>
-          <span class="card-back"></span>
-        </span>
-        <span class="playing-card" onclick="playCard(1)" style='perspective:300px;'>
-          <span class="card-front" data-suit-idx="1" data-rank-idx="0"></span>
-          <span class="card-back" ></span>
-        </span>
-      <span class="playing-card" onclick="playCard(2)" style='perspective: 300px;'>
-        <span class="card-front" data-suit-idx="2" data-rank-idx="0"></span>
-        <span class="card-back"></span>
-      </span>
+     <p>
+       <span class="playing-card" onclick="playCard(0)">
+         <span class="card-front" data-suit-idx="0" data-rank-idx="0"></span>
+         <span class="card-back"></span>
+       </span>
+       <span class="playing-card" onclick="playCard(1)" style='perspective:300px;'>
+         <span class="card-front" data-suit-idx="1" data-rank-idx="0"></span>
+         <span class="card-back" ></span>
+       </span>
+     <span class="playing-card" onclick="playCard(2)" style='perspective: 300px;'>
+       <span class="card-front" data-suit-idx="2" data-rank-idx="0"></span>
+       <span class="card-back"></span>
+     </span>
 
-      <span class="playing-card" onclick="playCard(3)" style='perspective: 1000px;'>
-        <span class="card-front" data-suit-idx="3" data-rank-idx="0"></span>
-        <span class="card-back"></span>
-        </span>
-      </p>
-      <div class ="left">
-        <section class="userInformation">
-        THIS IS A SECTION WHERE USER INFORMATION WILL GO ON
-        </section>
-        <section class ="whosOnline">
-        THIS IS A SECTION WHERE WHO'S ONLINE WILL GO ON
-        </section>
-      </div>
-      <div class="right">
-        <section id = "Game1">
-          <button type="button" class="Game1">Game 1</button>
-        </section>
-        <section id = "Game2">
-          <button type="button" class="Game2">Game 2</button>
-        </section>
-      </div>
+     <span class="playing-card" onclick="playCard(3)" style='perspective: 1000px;'>
+       <span class="card-front" data-suit-idx="3" data-rank-idx="0"></span>
+       <span class="card-back"></span>
+       </span>
+     </p>
+     <div class ="left">
+       <section class="userInformationHead">
+         This is where User Name goes
+       </section>
+       <section class="userInformationBody">
+       THIS IS A SECTION WHERE USER INFORMATION WILL GO ON
+       </section>
 
-      <section class = "userButtonRow1">
-        <form method="POST" action="/login">
-          <input type="hidden" value="1" name="userId">
-          <button id="btn-user-1" type="submit" class="btn btn-primary">USER 1</button>
-        </form>
-      </section>
-      <section class = "userButtonRow2">
-        <form method="POST" action="/login">
-          <input type="hidden" value="2" name="userId">
-          <button id="btn-user-2" type="submit" class="btn btn-primary">USER 2</button>
-        </form>
-      </section>
+       <section class="whosOnlineHead">
+       This is where Title WhosOnline will be
+       </section>
+       <section class ="whosOnlineBody">
+       THIS IS A SECTION WHERE WHO'S ONLINE WILL GO ON
+       </section>
+     </div>
+     <div class="right">
+       <section id = "Game1">
+         <button type="button" class="Game1">Game 1</button>
+       </section>
+       <section id = "Game2">
+         <button type="button" class="Game2">Game 2</button>
+       </section>
+     </div>
 
-    </main>
-  </body>
+     <section class = "userButtonRow1">
+       <form method="POST" action="/login">
+         <input type="hidden" value="1" name="userId">
+         <button id="btn-user-1" type="submit" class="btn btn-primary">USER 1</button>
+       </form>
+     </section>
+     <section class = "userButtonRow2">
+       <form method="POST" action="/login">
+         <input type="hidden" value="2" name="userId">
+         <button id="btn-user-2" type="submit" class="btn btn-primary">USER 2</button>
+       </form>
+     </section>
+
+   </main>
+ </body>
 </html>

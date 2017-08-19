@@ -30,7 +30,8 @@
     socket.on('load', function(state) {
           var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
       var state = JSON.parse(state);
-      $('<div>').addClass('card spades clickable ' + frontClasses[state.prizeCard])
+      console.log(state);
+      $('<div>').addClass('card spades clickable ' + frontClasses[state.prizeCard - 1])
       .appendTo('.card.stack');
     });
 
