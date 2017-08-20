@@ -1,5 +1,11 @@
-
 $(() => {
+
+$('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').on('mouseout', (event, eventObject) => {
+  $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').addClass('titleLetter');
+  setTimeout(function() {
+    $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').removeClass('titleLetter');
+  }, 1000)
+});
 
   const cards = document.querySelectorAll('.playing-card');
   cards.forEach(card => {
