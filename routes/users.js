@@ -36,37 +36,6 @@ module.exports = (knex) => {
         const games = { result: results };
         res.render("gamesPlayed", games);
       });
-
-  });
-
-  router.post('/', (req, res) => {
-    let winner = req.body.winner;
-    let loser = req.body.loser;
-  });
-
-  router.post("/register", (req, res) => {
-    knex('users')
-      .insert({name: req.body.name})
-      .then(() => res.status(200).send(req.body.name))
-      .catch(function(error) { console.error(error); });
-  });
-
-  //put
-  router.post("/win", (req, res) => {
-  knex('users')
-    .where('name', '=', req.body.name)
-    .increment('wins')
-    .then(() => res.status(200).send(req.body.name))
-    .catch(function(error) { console.error(error); });
-  });
-
-  //put
-  router.post("/loss", (req, res) => {
-  knex('users')
-    .where('name', '=', req.body.name)
-    .increment('losses')
-    .then(() => res.status(200).send(req.body.name))
-    .catch(function(error) { console.error(error); });
   });
 
   router.post("/", (req, res) => {
@@ -74,7 +43,6 @@ module.exports = (knex) => {
     knex
       .select("name")
       .from("users")
-      .where("name", req.body.name)
       .then((results) => {
         res.json(results);
       });
