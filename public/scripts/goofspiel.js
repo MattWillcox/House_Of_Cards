@@ -1,9 +1,17 @@
  $(() => {
 
- var socket = io.connect('http://localhost:8080/goofspiel');
-    var playerNum = Number(/userId=(\d+)/.exec(document.cookie)[1]);
+  var socket = io.connect('http://localhost:8080/goofspiel');
+  var playerNum = Number(/userId=(\d+)/.exec(document.cookie)[1]);
 
- renderCardFaces([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
+
+  renderCardFaces([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
+
+  $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').on('mouseout', (event, eventObject) => {
+    $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').addClass('titleLetter');
+    setTimeout(function() {
+      $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').removeClass('titleLetter');
+    }, 1000)
+  });
 
 
     function cardPlay(index) {

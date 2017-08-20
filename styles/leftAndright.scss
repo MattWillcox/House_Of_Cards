@@ -2,7 +2,7 @@
 .left {
  width: 570px;
  height: 355px;
- background-color: white;
+ background-color: #ebecea;
  float: left;
  visibility: hidden;
 }
@@ -20,7 +20,7 @@
 .right {
  width: 570px;
  height: 355px;
- background-color: white;
+ background-color: #ebecea;
  float: right;
  visibility: hidden;
 }
@@ -38,30 +38,49 @@
 
  margin-top: 30px;
  border :2px groove;
- background-color: orange;
-
+ background-color: #ffec8b;
+ border-radius: 2em;
 }
 
 .userInformationBody {
 
  border :2px groove;
- background-color: red;
+ background-color: #5E9A5B;
  margin-bottom: 30px;
  height: 120px;
+ border-radius: 2em;
 }
 
 .whosOnlineHead {
 
  margin-top: 30px;
  border :2px groove;
- background-color: pink;
-
+ background-color: #ffec8b;
+ border-radius: 2em;
 }
 
 .whosOnlineBody {
 
  border :2px groove;
- background-color: lightblue;
+ background-color: #5E9A5B;
  margin-bottom: 30px;
  height: 120px;
+ border-radius: 2em;
 }
+
+
+p.midground {
+  background-color: #ebecea;
+  padding : 5em;
+}
+
+div.user {
+  background-color: #ebecea;
+  display: block;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+}
+
+
+
