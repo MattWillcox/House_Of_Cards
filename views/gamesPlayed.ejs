@@ -1,10 +1,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
- <head>
- </head>
- <body>
- <li> Test </li>
- <li> Test2 </li>
- </body>
+  <head>
+
+  </head>
+  <body>
+    <% for(i in result) { %>
+      <div><%= JSON.stringify(result[i]) %></div>
+    <% } %>
+  </body>
 </html>

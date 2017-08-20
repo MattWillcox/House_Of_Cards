@@ -26,9 +26,10 @@ module.exports = (knex) => {
     knex
       .select("*")
       .from("archive")
-      .where("player1_id",req.params.userId).orWhere("player2_id",req.params.userId)
+      .where("player1_id",req.params.userId.slice(-1)).orWhere("player2_id",req.params.userId.slice(-1))
       .then((results) => {
-        res.render("gamesPlayed", results);
+        const games = { result: results };
+        res.render("gamesPlayed", games);
       });
 
   });
