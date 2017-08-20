@@ -3,6 +3,8 @@
  var socket = io.connect('http://localhost:8080/');
     var playerNum = Number(/userId=(\d+)/.exec(document.cookie)[1]);
 
+
+
  renderCardFaces([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
 
 
@@ -14,7 +16,6 @@
       }));
     }
     socket.on('load', function(state) {
-      console.log("rohit on load event");
           var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
       var state = JSON.parse(state);
        $('.card.stack').empty();
@@ -49,6 +50,9 @@
         $('<div>').addClass('TIE').text("TIED")
         .appendTo('.scoreboard');
       };
+        if (state.p1Score || state.p2score === undefined){
+        windows.alert("opponent has left");
+        }
     });
 
     socket.on('result', function(state){
@@ -154,5 +158,20 @@
           card.removeClass('hearts clickable ' + frontClasses[i]);
         }
       }
+    }
+});
+
+
+$(".btn-default").click(function() {
+var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + '=;' +
+            'expires=Thu, 01-Jan-1970 00:00:01 GMT;' +
+            'path=' + '/;' +
+            'domain=' + window.location.host + ';' +
+            'secure=;';
     }
 });
