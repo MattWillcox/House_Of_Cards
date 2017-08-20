@@ -22,6 +22,17 @@ module.exports = (knex) => {
       });
   });
 
+  router.get("/gamesPlayed/:userId", (req, res) => {
+    knex
+      .select("*")
+      .from("archive")
+      .where("player1_id",req.params.userId).orWhere("player2_id",req.params.userId)
+      .then((results) => {
+        res.render("gamesPlayed", results);
+      });
+
+  });
+
   router.post('/', (req, res) => {
     let winner = req.body.winner;
     let loser = req.body.loser;
