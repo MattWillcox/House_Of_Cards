@@ -21,11 +21,9 @@
 .scoreboard {
   float: left;
   display: inline-block;
-   background: #15706f;
-  border-bottom: 5px solid darken(gold, 10%);
+  border-bottom: 2px solid darken(gold, 10%);
   cursor: pointer;
   font: 1.5em Budmo;
-  font-weight: 800;
   margin-top: 1em;
   text-transform: uppercase;
   width: 250px;
@@ -34,7 +32,7 @@
   margin-top: -8%;
   margin-left: 20%;
   padding: .4em;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 
@@ -60,17 +58,15 @@ margin-top: 70px;
 .turnButton {
   display: inline-block;
   float: left;
-  background: #15706f;
-  border-bottom: 5px solid darken(gold, 10%);
+  border-bottom: 2px solid darken(gold, 10%);
   font: 2em Budmo;
-  font-weight: 800;
   margin-left: 20%;
   margin-top: 1em;
   text-transform: uppercase;
   width: auto;
   color: white;
-  padding: .5em;
-  border-radius: 5px;
+  padding: .3em;
+  border-radius: 2px;
   position: absolute;
 }
 
@@ -78,18 +74,15 @@ margin-top: 70px;
 .btn-default {
   display: inline-block;
   float: right;
-  background: #15706f;
-  border-bottom: 5px solid darken(gold, 10%);
+  border-bottom: 2px solid darken(gold, 10%);
   cursor: pointer;
   font: 2em Budmo;
-  font-weight: 800;
   margin-right: 20%;
-  height: 2em;
   margin-top: 1em;
   text-transform: uppercase;
-  width: 250px;
+  padding: .3em;
+  width: auto;
   color: white;
-
 
 }
 

@@ -148,6 +148,7 @@
 
     function renderCardFaces(myHand){
       var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
+
       for (let i = 0; i < 13; i++) {
         var cardId = '#mine' + i;
         var card = $(cardId);
@@ -155,13 +156,25 @@
           cardPlay(i);
         }
         card.off('click');    // NOTE: if we ever need a second click handler on this, this line might be bad news
-        if (myHand[i]) {
-          card.removeClass('back');
-          card.addClass('hearts clickable ' + frontClasses[i]);
-          card.on('click', sendThisCard);
-        } else {
-          card.addClass('back');
-          card.removeClass('hearts clickable ' + frontClasses[i]);
+        if(playerNum === 1) {
+          if (myHand[i]) {
+            card.removeClass('back');
+            card.addClass('hearts clickable ' + frontClasses[i]);
+            card.on('click', sendThisCard);
+          } else {
+            card.addClass('back');
+            card.removeClass('hearts clickable ' + frontClasses[i]);
+          }
+        }
+        if(playerNum === 2) {
+          if (myHand[i]) {
+            card.removeClass('back');
+            card.addClass('clubs clickable ' + frontClasses[i]);
+            card.on('click', sendThisCard);
+          } else {
+            card.addClass('back');
+            card.removeClass('clubs clickable ' + frontClasses[i]);
+          }
         }
       }
     }
