@@ -14,9 +14,14 @@ module.exports = (knex) => {
 
   router.get("/", (req, res) => {
     knex
-      .select("*")
+      .select("users.name")
+      .count('winner as wins')
       .from("users")
-      .orderBy("wins")
+      .innerJoin('archive', function () {
+        this.on('users.id', '=', 'winner')
+      })
+      .groupBy('users.name')
+      .orderBy("wins", 'desc')
       .then((results) => {
         res.json(results);
       });
