@@ -1,9 +1,7 @@
  $(() => {
 
- var socket = io.connect('http://localhost:8080/');
+ var socket = io.connect('http://localhost:8080/goofspiel');
     var playerNum = Number(/userId=(\d+)/.exec(document.cookie)[1]);
-
-
 
  renderCardFaces([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
 
@@ -15,10 +13,11 @@
         cookies: document.cookie
       }));
     }
+
     socket.on('load', function(state) {
-          var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
+      var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
       var state = JSON.parse(state);
-       $('.card.stack').empty();
+      $('.card.stack').empty();
       $('<div>').addClass('card spades clickable ' + frontClasses[state.prizeCard - 1])
       .appendTo('.card.stack');
     });
@@ -132,12 +131,6 @@
       };
 
       return nextState;
-    }
-
-    function updateState(data) {
-      // update ui based on data object
-      //$().appendChild();
-      console.log(data);
     }
 
     function renderCardFaces(myHand){
