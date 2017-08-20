@@ -4,11 +4,14 @@
     <title>Welcome to House Of Cards</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/goofspielDesign.css" type="text/css" />
     <link rel="stylesheet" href="/styles/cardlist.css" type="text/css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/goofspielDesign.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/fontstyle.css" type="text/css" />
+
+
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/goofspiel.js"></script>
@@ -17,14 +20,28 @@
   </head>
 
   <body>
-    <nav id="navbar">
-        <img class="logo" src="/images/cards.png" alt="Cards" >
-        <section class="title">House Of Cards</section>
+     <nav id="navbar">
+      <img class="logo" src="/images/cleartansuits.jpg" alt="Cards" >
+      <section class="title">
+        <div class="hh">H</div>
+        <div class="o1">o</div>
+        <div class="u1">u</div>
+        <div class="s1">s</div>
+        <div class="e1">e </div>
+        <div class="o2">O</div>
+        <div class="f1">f </div>
+        <div class="c1">C</div>
+        <div class="a1">a</div>
+        <div class="r1">r</div>
+        <div class="d1">d</div>
+        <div class="s2">s</div>
+      </section>
     </nav>
-    <main>
-      <a href="/" class="btn btn-default">Go to Home </a>
-      <div class="turnButton">Make a move</div>
 
+    <main class="goofs">
+      <!-- <img class="gameTable" src="/images/light-sportive-table.png" alt='table'> -->
+      <div class="turnButton">Make a move</div>
+      <a href="/" class="btn btn-default">Go to Home </a>
       <div class="enemyCards">
         <% for (var i = 0; i < 13; i++) { %>
           <div class="card back"> </div>
