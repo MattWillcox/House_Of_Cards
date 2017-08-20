@@ -51,7 +51,11 @@ div.hh:hover, .o1:hover, .u1:hover, .s1:hover, .e1:hover, .o2:hover, .f1:hover, 
   display:inline-block;
 }
 
-
+.titleLetter{
+  -webkit-animation: anim 1s  linear;
+  animation: anim 1s  linear;
+  display:inline-block;
+}
 
 
 @-webkit-keyframes anim {

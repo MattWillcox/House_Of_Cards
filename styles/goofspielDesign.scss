@@ -1,20 +1,103 @@
+@font-face {
+    font-family: GeoSansLight;
+    src: url(/fonts/GeosansLight.ttf);
+}
+@font-face {
+    font-family: Budmo;
+    src: url(/fonts/budmojiggler.ttf);
+}
+
+@font-face {
+  font-family: Hazel;
+  src: url(/fonts/HazelDecoLight-Regular.ttf);
+}
+
+@font-face {
+  font-family: Retro;
+  src: url(/fonts/RETROHAND.tff);
+}
 
 
 .scoreboard {
-  float: right;
-  border : 30px dotted;
-  height: 120px;
+  float: left;
+  display: inline-block;
+   background: #15706f;
+  border-bottom: 5px solid darken(gold, 10%);
+  cursor: pointer;
+  font: 1.5em Budmo;
+  font-weight: 800;
+  margin-top: 1em;
+  text-transform: uppercase;
   width: 250px;
+  color: white;
+  position: absolute;
+  margin-top: -8%;
+  margin-left: 20%;
+  padding: .4em;
+  border-radius: 5px;
+}
+
+
+
+
+main.goofs {
+  background-color: #008080;
+  height: 50%px;
+  width: 94%;
+  border-radius: 30%;
+  margin: 0 auto;
+  border: 1em solid black;
+  z-index: 2;
+  margin-left: 3%;
+  margin-right:3%;
+}
+
+.enemyCards {
+margin-top: 70px;
+
 }
 
 .turnButton {
+  display: inline-block;
   float: left;
-  border: 15px dotted;
-  height: 80px;
-  width: 120px;
-  margin-right: 100%;
+  background: #15706f;
+  border-bottom: 5px solid darken(gold, 10%);
+  font: 2em Budmo;
+  font-weight: 800;
+  margin-left: 20%;
+  margin-top: 1em;
+  text-transform: uppercase;
+  width: auto;
+  color: white;
+  padding: .5em;
+  border-radius: 5px;
+  position: absolute;
 }
 
+
 .btn-default {
-  float:right;
+  display: inline-block;
+  float: right;
+  background: #15706f;
+  border-bottom: 5px solid darken(gold, 10%);
+  cursor: pointer;
+  font: 2em Budmo;
+  font-weight: 800;
+  margin-right: 20%;
+  height: 2em;
+  margin-top: 1em;
+  text-transform: uppercase;
+  width: 250px;
+  color: white;
+
+
 }
+
+.btn-default:hover {
+  background: lighten(#15706f, 5%);
+  border-bottom: 5px solid darken(#15706f, 5%);
+}
+
+.btn-default:active { border: none; }
+
+
