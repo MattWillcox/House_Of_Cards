@@ -1,8 +1,10 @@
  $(() => {
 
-  var socket = io.connect('http://localhost:8080/goofspiel');
+  var socket = io.connect('http://localhost:8080/war');
   var playerNum = Number(/userId=(\d+)/.exec(document.cookie)[1]);
-
+  var unavailable = [];
+  var playerOneHand = [];
+  var playerTwoHand = [];
 
   renderCardFaces([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
 
@@ -21,8 +23,33 @@
         cookies: document.cookie
       }));
     }
+
+    function generateCard() {
+      var suits = ['spades', 'hearts', 'clubs', 'diamonds']
+      var values = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
+
+      return (suits[Math.floor(Math.random() * 4)] + values[Math.floor(Math.random() * 13)]);
+    }
+
+    function generateStartingHand(playerHand) {
+      for (var i = 0; i <= 26; i++) {
+        var card = generateCard();
+
+        if (unavailable.includes(card)) {
+          generateStartingHand();
+        }
+
+        unavailable.push(card);
+        playerHand.push(card);
+
+      }
+
+      return playerHand;
+    }
+
     socket.on('load', function(state) {
-          var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
+
+          var frontClasses = ['h1ace', 'h2two', 'h3three', 'h4four', 'h5five', 'h6six', 'h7seven', 'h8eight', 'h9nine', 'htten', 'hjjack', 'hqqueen', 'hkking','s1ace', 's2two', 's3three', 's4four', 's5five', 's6six', 's7seven', 's8eight', 's9nine', 'stten', 'sjjack', 'sqqueen', 'skking','c1ace', 'c2two', 'c3three', 'c4four', 'c5five', 'c6six', 'c7seven', 'c8eight', 'c9nine', 'ctten', 'cjjack', 'cqqueen', 'ckking','d1ace', 'd2two', 'd3three', 'd4four', 'd5five', 'd6six', 'd7seven', 'd8eight', 'd9nine', 'dtten', 'djjack', 'dqqueen', 'dkking'];
       var state = JSON.parse(state);
        $('.card.stack').empty();
       $('<div>').addClass('card spades clickable ' + frontClasses[state.prizeCard - 1])

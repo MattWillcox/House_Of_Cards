@@ -1,0 +1,96 @@
+@font-face {
+    font-family: GeoSansLight;
+    src: url(/fonts/GeosansLight.ttf);
+}
+@font-face {
+    font-family: Budmo;
+    src: url(/fonts/budmojiggler.ttf);
+}
+
+@font-face {
+  font-family: Hazel;
+  src: url(/fonts/HazelDecoLight-Regular.ttf);
+}
+
+@font-face {
+  font-family: Retro;
+  src: url(/fonts/RETROHAND.tff);
+}
+
+
+.scoreboard {
+  float: left;
+  display: inline-block;
+  border-bottom: 2px solid darken(gold, 10%);
+  cursor: pointer;
+  font: 1.5em Budmo;
+  margin-top: 1em;
+  text-transform: uppercase;
+  width: 250px;
+  color: white;
+  position: absolute;
+  margin-top: -8%;
+  margin-left: 20%;
+  padding: .4em;
+  border-radius: 2px;
+}
+
+
+
+
+main.goofs {
+  background-color: #008080;
+  height: 50%px;
+  width: 94%;
+  border-radius: 30%;
+  margin: 0 auto;
+  border: 1em solid black;
+  z-index: 2;
+  margin-left: 3%;
+  margin-right:3%;
+}
+
+.enemyCards {
+margin-top: 70px;
+
+}
+
+.turnButton {
+  display: inline-block;
+  float: left;
+  border-bottom: 2px solid darken(gold, 10%);
+  font: 2em Budmo;
+  margin-left: 20%;
+  margin-top: 1em;
+  text-transform: uppercase;
+  width: auto;
+  color: white;
+  padding: .3em;
+  border-radius: 2px;
+  position: absolute;
+}
+
+
+.btn-default {
+  display: inline-block;
+  float: right;
+  border-bottom: 2px solid darken(gold, 10%);
+  cursor: pointer;
+  font: 2em Budmo;
+  margin-right: 20%;
+  margin-top: 1em;
+  text-transform: uppercase;
+  padding: .3em;
+  width: auto;
+  color: white;
+
+}
+
+.btn-default:hover {
+  background: lighten(#15706f, 5%);
+  border-bottom: 5px solid darken(#15706f, 5%);
+}
+
+.btn-default:active { border: none; }
+
+

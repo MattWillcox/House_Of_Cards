@@ -80,3 +80,8 @@ app.get("/goofspiel", (req, res) => {
   console.log(req.cookies);
   res.render("goofspiel")
 });
+
+app.get("/war", (req, res) => {
+  console.log(req.cookies);
+  res.render("war")
+});
