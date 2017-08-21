@@ -10,9 +10,35 @@ $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').on('mouseout', (
   }, 1000)
 });
 
+var unavailable = [];
+var playerOneHand = [];
+var playerTwoHand = [];
+
+function generateCard() {
+  var suits = ['spades', 'hearts', 'clubs', 'diamonds']
+  var values = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
+
+  return (suits[Math.floor(Math.random() * 4)] + ' ' + values[Math.floor(Math.random() * 13)]);
+}
+
+function generateStartingHand(playerHand) {
+  for (var i = 0; i < 26; i++) {
+    var card = generateCard();
+
+    if (unavailable.includes(card)) {
+      generateStartingHand();
+    }
+
+    unavailable.push(card);
+    playerHand.push(card);
+
+  }
+
+  return playerHand;
+}
 
 function renderCardFaces(myHand){
-var frontClasses = ['h1ace', 'h2two', 'h3three', 'h4four', 'h5five', 'h6six', 'h7seven', 'h8eight', 'h9nine', 'htten', 'hjjack', 'hqqueen', 'hkking','s1ace', 's2two', 's3three', 's4four', 's5five', 's6six', 's7seven', 's8eight', 's9nine', 'stten', 'sjjack', 'sqqueen', 'skking','c1ace', 'c2two', 'c3three', 'c4four', 'c5five', 'c6six', 'c7seven', 'c8eight', 'c9nine', 'ctten', 'cjjack', 'cqqueen', 'ckking','d1ace', 'd2two', 'd3three', 'd4four', 'd5five', 'd6six', 'd7seven', 'd8eight', 'd9nine', 'dtten', 'djjack', 'dqqueen', 'dkking'];
+var hand = generateStartingHand(myHand);
 var handCard = $('.handCardPlayed');
 var warCard = $('.warCardPlayed');
 function sendThisCard() {
@@ -22,8 +48,7 @@ function sendThisCard() {
 }
 handCard.off('click');    // NOTE: if we ever need a second click handler on this, this line might be bad news
 warCard.removeClass('back');
-warCard.addClass('card' + frontClasses[myHand[myHand.length-1]].slice(0,1) + 'clickable' +
- frontClasses[myHand[myHand.length-1]].slice(1));
+warCard.addClass('card ' + hand[hand.length-1] + ' clickable');
 handCard.on('click', sendThisCard);
 }
 
