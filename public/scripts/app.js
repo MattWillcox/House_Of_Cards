@@ -71,40 +71,23 @@ $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').on('mouseout', (
     $(".left").css('visibility', 'visible');
     $(".right").css('visibility', 'visible');
   });
-  var counter =0;
-  var counter2 =0;
+
   $('#Game1').click(function(event){
     event.preventDefault();
 
     var windowSizeArray = [ "width=200,height=200",
                             "width=300,height=400,scrollbars=yes" ];
-                   var url = "http://www.google.com";
-                   var windowName = "popUp"+counter;//$(this).attr("name");
-                   var windowSize = windowSizeArray[$(this).attr("rel")];
-                   counter = counter + 1;
-                   window.open(url, windowName, windowSize);
-                   console.log(counter);
-                   event.preventDefault();
-
-
-
+      var url = "/war";
+      window.open(url, "_self");
+      event.preventDefault();
   });
 
    $('#Game2').click(function(event){
-
-
-
     var windowSizeArray = [ "width=200,height=200",
                             "width=300,height=400,scrollbars=yes" ];
-
-
-                   var url = "/goofspiel/"
-                   var windowName = "popUp2"+ counter2;//$(this).attr("name");
-                   var windowSize = windowSizeArray[$(this).attr("rel")];
-                    counter2 = counter2+1;
-                   window.open(url,"_self");
-                   event.preventDefault();
-
+      var url = "/goofspiel/"
+      window.open(url,"_self");
+      event.preventDefault();
   });
 
 });

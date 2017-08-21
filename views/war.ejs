@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Welcome to House Of Cards</title>
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/warcardlist.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/fontstyle.css" type="text/css" />
+        <link rel="stylesheet" href="/styles/fontstyle.css" type="text/css" />
+            <link rel="stylesheet" href="/styles/goofspielDesign.css" type="text/css" />
+
+
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/war.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+
+
+  </head>
+
+  <body>
+     <nav id="navbar">
+      <img class="logo" src="/images/cleartansuits.jpg" alt="Cards" >
+      <section class="title">
+        <div class="hh">H</div>
+        <div class="o1">o</div>
+        <div class="u1">u</div>
+        <div class="s1">s</div>
+        <div class="e1">e </div>
+        <div class="o2">O</div>
+        <div class="f1">f </div>
+        <div class="c1">C</div>
+        <div class="a1">a</div>
+        <div class="r1">r</div>
+        <div class="d1">d</div>
+        <div class="s2">s</div>
+      </section>
+    </nav>
+
+    <a href="/" class="btn btn-default">Go to Home </a>
+    <div class="turnButton">Make a move</div>
+    <main class="goofs">
+
+      <div class="enemyCards">
+        <div class="card back"> </div>
+        <div class="card stack"></div>
+      </div>
+      <div class="userCards">
+        <div class="card back handCardPlayed"> </div>
+        <div class="card h clickable four"></div>
+      </div>
+    </main>
+    <div class="scoreboard">
+      <div class="userScore">user : NUMBER</div>
+      <div class="opponentScore">opponent: NUMBER</div>
+    </div>
+  </body>
+</html>
+
