@@ -60,6 +60,7 @@ socket.on('load', function(state) {
   .appendTo('.card.stack');
 });
 
+
 socket.on('updatePrizeCard' , function(state){
   console.log("in updatePrizeCard");
   var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
