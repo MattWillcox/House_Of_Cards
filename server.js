@@ -20,6 +20,7 @@ const io          = require('socket.io')(http);
 
 // Seperated Routes for each Resource
 const sockets = require("./lib/sockets")
+const warSockets = require("./lib/war-sockets");
 const usersRoutes = require("./routes/users");
 
 // Cookies
@@ -74,7 +75,12 @@ app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
 
+app.get('/war', function(req, res) {
+  res.render('war');
+});
+
 sockets(io, knex);
+warSockets(io, knex);
 
 app.get("/goofspiel", (req, res) => {
   console.log(req.cookies);

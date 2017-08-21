@@ -1,12 +1,14 @@
 
 .back {
-  background: url('http://previews.123rf.com/images/shottythefirst/shottythefirst1403/shottythefirst140300042/26763558-Abstract-Blue-Playing-Card-Back-Pattern-Texture-Stock-Photo.jpg');
+  background: url(/images/200px-Card_back-Classic.png);
+  background-size: 100% 100%;
 }
 
 .card.stack{
   float:right;
+  background-size: 100% 100%;
   margin-top: 40px;
-  background: url('http://previews.123rf.com/images/shottythefirst/shottythefirst1403/shottythefirst140300042/26763558-Abstract-Blue-Playing-Card-Back-Pattern-Texture-Stock-Photo.jpg');
+  background: url(/images/200px-Card_back-Classic.png);
 }
 
 
@@ -19,7 +21,7 @@ main {
   width: fixed;
   position: fill;
   background:linear-gradient(135deg, #008080 33%,#00CED1 95%);
-  padding:4% 10%;
+  padding:4% ;
 }
 .card{
   margin:1.5px;
@@ -35,7 +37,7 @@ main {
   position:relative;
   float:left;
   background-color:#fcfcfc;
-  border-radius:2%;
+  border-radius:6%;
   box-shadow:1px 2px 1px rgba(0,0,0,.6);
   display:block;
   width:75px;

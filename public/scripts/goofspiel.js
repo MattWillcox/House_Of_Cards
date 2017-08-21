@@ -16,6 +16,91 @@ $(() => {
       index: index,
       cookies: document.cookie
     }));
+
+var socket = io.connect('http://localhost:8080/goofspiel');
+var playerNum = Number(/userId=(\d+)/.exec(document.cookie)[1]);
+
+$('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').on('mouseout', (event, eventObject) => {
+  $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').addClass('titleLetter');
+  setTimeout(function() {
+    $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').removeClass('titleLetter');
+  }, 1000)
+});
+
+function cardPlay(index) {
+  console.log("cardplay.  emitting to server.");
+  socket.emit('cardplay', JSON.stringify({
+    index: index,
+    cookies: document.cookie
+  }));
+}
+
+function renderCardFaces(myHand){
+  var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
+  for (let i = 0; i < 13; i++) {
+      var cardId = '#mine' + i;
+      var card = $(cardId);
+      function sendThisCard() {
+        cardPlay(i);
+    }
+    card.off('click');    // NOTE: if we ever need a second click handler on this, this line might be bad news
+    if(playerNum === 1){
+      if (myHand[i]) {
+        card.removeClass('back');
+        card.addClass('hearts clickable ' + frontClasses[i]);
+        card.on('click', sendThisCard);
+      } else {
+        card.addClass('back');
+        card.removeClass('hearts clickable ' + frontClasses[i]);
+      }
+    }
+    if(playerNum === 2){
+      if (myHand[i]) {
+        card.removeClass('back');
+        card.addClass('clubs clickable ' + frontClasses[i]);
+        card.on('click', sendThisCard);
+      } else {
+        card.addClass('back');
+        card.removeClass('clubs clickable ' + frontClasses[i]);
+      }
+    }
+  }
+}
+
+renderCardFaces([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
+
+socket.on('load', function(state) {
+  var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
+  var state = JSON.parse(state);
+  $('.card.stack').empty();
+  $('<div>').addClass('card spades clickable ' + frontClasses[state.prizeCard - 1])
+  .appendTo('.card.stack');
+});
+
+socket.on('updatePrizeCard' , function(state){
+  console.log("in updatePrizeCard");
+  var frontClasses = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
+  var state = JSON.parse(state);
+  $('.card.stack').empty();
+  $('<div>').addClass('card spades clickable ' + frontClasses[state.prizeCard - 1])
+  .appendTo('.card.stack');
+  $('.userScore').text("Player 1:" + state.p1Score);
+  $('.opponentScore').text("Player 2:" + state.p2Score);
+});
+
+socket.on('gameOver', function(state){
+  var state = JSON.parse(state);
+  $('.scoreboard').empty();
+  if (state.p1Score > state.p2Score){
+    $('<div>').addClass('p1Winner').text("P1 WINS CONGRATS")
+    .appendTo('.scoreboard');
+  } if ( state.p2Score > state.p1Score){
+    $('<div>').addClass('p2Winner').text("P2 WINS CONGRATS")
+    .appendTo('.scoreboard');
+  } if ( state.p1Score == state.p2Score){
+    $('<div>').addClass('TIE').text("TIED")
+    .appendTo('.scoreboard');
+
   }
 
   function renderCardFaces(myHand){ // This function renders each card respectively

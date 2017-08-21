@@ -53,6 +53,7 @@
          <span class="card-back"></span>
        </span>
 
+
        <span class="playing-card" onclick="playCard(3)" style='perspective: 1000px;'>
          <span class="card-front" data-suit-idx="3" data-rank-idx="0"></span>
          <span class="card-back"></span>
@@ -94,7 +95,50 @@
      </form>
     </section>
    </div>
+         <span class="playing-card" onclick="playCard(3)" style='perspective: 1000px;'>
+           <span class="card-front" data-suit-idx="3" data-rank-idx="0"></span>
+           <span class="card-back"></span>
+        </span>
+        </p>
+     <div class="user">
+     <section class = "userButtonRow1 login">
+       <form method="POST" action="/login">
+         <input type="hidden" value="1" name="userId">
+         <button id="btn-user-1" type="submit" class="btn-btn-primary">USER 1</button>
+       </form>
+     </section>
+     <section class = "userButtonRow2 login">
+       <form method="POST" action="/login">
+         <input type="hidden" value="2" name="userId">
+         <button id="btn-user-2" type="submit" class="btn-btn-primary">USER 2</button>
+       </form>
+     </section>
+     </div>
+
+     <div class ="left">
+       <section class="userInformationHead">
+         This is where User Name goes
+       </section>
+       <section class="userInformationBody">
+       </section>
+
+       <section class="whosOnlineHead">
+       User Information
+       </section>
+       <section class ="whosOnlineBody">
+       </section>
+     </div>
+
+     <div class="right">
+       <section id = "Game1">
+         <button type="button" class="Game1">WAR!</button>
+       </section>
+       <section id = "Game2">
+         <button type="button" class="Game2">Goofspiel</button>
+       </section>
+            </div>
 
    </main>
+   <p class="cornerMessage"> Presented by M.S.R Group INC. <p>
  </body>
 </html>
