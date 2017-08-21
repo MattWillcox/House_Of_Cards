@@ -4,7 +4,7 @@ body {
 .left {
  width: 570px;
  height: 355px;
- background-color: #ebecea;
+ background-color: #e1dddd;
  float: left;
  visibility: hidden;
 }
@@ -22,32 +22,56 @@ body {
 .right {
  width: 570px;
  height: 355px;
- background-color: #ebecea;
+ background-color: #e1dddd;
  float: right;
  visibility: hidden;
 }
 
 .right .Game1 {
- margin-top: 40px;
+  width: 200px;
+  height: 50px;
+  border-radius: 2em;
+  font: 2em Budmo;
+  border-bottom: 2px solid darken(gold, 10%);
+  margin:2em;
 }
 
-.right .Game2 {
- margin-top: 80px;
- margin-bottom: 70px;
+.right .Game1:hover {
+  background: lighten(#15706f, 5%);
+  border-bottom: 5px solid darken(#15706f, 5%);
 }
+
+.right .Game1 :active { border: none; }
+
+.right .Game2 {
+  width: 200px;
+  height: 50px;
+  border-radius: 2em;
+  font: 2em Budmo;
+  border-bottom: 2px solid darken(gold, 10%);
+  margin:2em;
+
+}
+
+.left .Game1:hover {
+  background: lighten(#15706f, 5%);
+  border-bottom: 5px solid darken(#15706f, 5%);
+}
+
+.left .Game1 :active { border: none; }
 
 .userInformationHead {
 
  margin-top: 30px;
  border :2px groove;
- background-color: #ffec8b;
+ background-color: #C5B358;
  border-radius: 2em;
 }
 
 .userInformationBody {
 
  border :2px groove;
- background-color: #5E9A5B;
+ background:linear-gradient(135deg, #008080 33%,#00CED1 95%);
  margin-bottom: 30px;
  height: 120px;
  border-radius: 2em;
@@ -64,7 +88,7 @@ body {
 .whosOnlineBody {
 
  border :2px groove;
- background-color: #5E9A5B;
+ background:linear-gradient(135deg, #008080 33%,#00CED1 95%);
  margin-bottom: 30px;
  height: 120px;
  border-radius: 2em;
@@ -72,7 +96,7 @@ body {
 
 
 p.midground {
-  background-color: #ebecea;
+  background-color: #e1dddd;
   padding : 5em;
 }
 
