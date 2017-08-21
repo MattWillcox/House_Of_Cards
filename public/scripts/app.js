@@ -1,11 +1,11 @@
 $(() => {
 
-$('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').on('mouseout', (event, eventObject) => {
-  $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').addClass('titleLetter');
-  setTimeout(function() {
-    $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').removeClass('titleLetter');
-  }, 1000)
-});
+  $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').on('mouseout', (event, eventObject) => {
+    $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').addClass('titleLetter');
+    setTimeout(function() {
+      $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').removeClass('titleLetter');
+    }, 1000)
+  });
 
   const cards = document.querySelectorAll('.playing-card');
   cards.forEach(card => {
@@ -16,7 +16,7 @@ $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').on('mouseout', (
     });
   });
 
-  $('button#btn-user-1').click(function(e){
+  $('button#btn-user-1').click(function(e){ //Enables coockie encrpytion via button which is representative of login.
     e.preventDefault();
 
     var userId = $(this).siblings("input").val();
@@ -52,7 +52,7 @@ $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').on('mouseout', (
     })
   })
 
-  $('.userButtonRow1').click(function(){
+  $('.userButtonRow1').click(function(){ // Enables slide animation of each "login" respectively.
     $('.userButtonRow2').slideUp("slow");
     $('.userButtonRow3').slideUp("slow");
     $('.userButtonRow4').slideUp("slow");
@@ -73,9 +73,10 @@ $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').on('mouseout', (
   });
   var counter =0;
   var counter2 =0;
-  $('#Game1').click(function(event){
-    event.preventDefault();
 
+  $('#Game1').click(function(event){ // Enables game 1 to be played.
+
+    event.preventDefault();
     var windowSizeArray = [ "width=200,height=200",
                             "width=300,height=400,scrollbars=yes" ];
                    var url = "http://www.google.com";
@@ -85,19 +86,12 @@ $('.hh, .o1, .u1, .s1, .e1, .o2, .f1, .c1, .a1, .r1, .d1, .s2').on('mouseout', (
                    window.open(url, windowName, windowSize);
                    console.log(counter);
                    event.preventDefault();
-
-
-
   });
 
-   $('#Game2').click(function(event){
-
-
+   $('#Game2').click(function(event){ // Enables game 2 to be played.
 
     var windowSizeArray = [ "width=200,height=200",
                             "width=300,height=400,scrollbars=yes" ];
-
-
                    var url = "/goofspiel/"
                    var windowName = "popUp2"+ counter2;//$(this).attr("name");
                    var windowSize = windowSizeArray[$(this).attr("rel")];

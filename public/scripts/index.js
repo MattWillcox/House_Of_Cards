@@ -1,4 +1,4 @@
-$(() => {
+$(() => { //Enables user information to be hosted along with the ranking page.
   $('.login').click(() => {
     let userResult = {};
     $.getJSON("/api/users").done((users) => {
