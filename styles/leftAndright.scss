@@ -1,4 +1,6 @@
-
+body {
+  background-size: 100% 1200px;
+}
 .left {
  width: 570px;
  height: 355px;
@@ -75,11 +77,16 @@ p.midground {
 }
 
 div.user {
-  background-color: #ebecea;
-  display: block;
+  background-color: gray;
+  display: inline-block;
   padding-top: 50px;
   padding-bottom: 50px;
-
+  width: 3em;
+  float: left;
+  border-top: solid .5em #ebecea;
+  border-left: solid .3em #ebecea;
+  border-bottom: solid .15em black;
+  border-right: solid .1em black;
 }
 
 
