@@ -1,29 +1,36 @@
-Hello!
+# Hello!
 
-Welcome to the MSR House of Cards App.
+## About
+Welcome to the MSR House of Cards.
+This is a multiplayer card game web application. It currently supports only 2 players and only the card game goofspiel but more functionality is in progress. We have utilized web socket technology to simultaneously play across to different browsers. It currently only support local play but we plan to host on heroku soon.
 
-Please take a moment to read this document as it'll help you run the program as smooth as possible.
+## Set Up
 
--First, clone this file into your computer. 
--Run NPM install --save in your terminal to install all the dependencies.
--Run NPM run local in the Terminal to start the server.
--In two sepeerate browser types (IE,FIREFOX,CHROME,CHROME INCOGNITO) connect to the host site at localhost:8080.
--login as a user of your choice, and select the appropriate game.
+1. First, clone this file into your computer. 
+2. Run NPM install in your terminal to install all the dependencies.
+3. Run NPM run local in the Terminal to start the server.
+4. In two seperate browser types (IE,FIREFOX,CHROME,CHROME INCOGNITO) connect to the host site at localhost:8080.
+5. login as a user of your choice, and select the appropriate game.
 
 You'll notice a score board and player history board after login. These will update as the games are platyed.
 
+## Games
 
-War
+### GoofSpiel
+1. each player can play for the revealed prize card deck with a card in their hand. Cards are compared and the player that plays the higher card # is awarded the prize card value. The values are added to their respective scores and when all cards are played, a winner is decided based on whoever has the higher score.
+2. Users can't play more than 1 card than their opponent, so please wait while your opponent picks their card.
+
+
+### War (In progress)
 1. each player draws a card facedown
 2. reveal
 3. if card is same, draw 4 card
 4. larger card wins & takes opponent card(s)
 5. Winner is decided on the user with the most points
 
-
-GoofSpiel
-1. each player can play for the revealed prize card deck with a card in their hand. Cards are compared and the player that plays the higher card # is awarded the prize card value. The values are added to their respective scores and when all cards are played, a winner is decided based on whoever has the higher score.
-2. Users can't play more than 1 card than their opponent, so please wait while your opponent picks their card.
+## Screenshots
+![main menu](https://github.com/MattWillcox/House_Of_Cards/blob/master/public/images/Screenshot1.png)
+![goofspiel game](https://github.com/MattWillcox/House_Of_Cards/blob/master/public/images/Screenshot2.png)
 
 NPM Dependencies:
     "body-parser": "^1.15.2",
