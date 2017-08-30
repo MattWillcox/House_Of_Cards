@@ -2,7 +2,7 @@
 
 ## About
 Welcome to the MSR House of Cards.
-This is a multiplayer card game web application. It currently supports only 2 players and only the card game goofspiel but more functionality is in progress. We have utilized web socket technology to simultaneously play across to different browsers. It currently only support local play but we plan to host on heroku soon.
+This is a multiplayer card game web application. It currently supports only 2 players and only the card game goofspiel but more functionality is in progress. We have utilized web sockets using Socket.io to simultaneously play across to different browsers. It currently only supports local play but we plan to host on heroku soon. Other technologies utilized: JQuery, Ajax, Knex, SASS, Bootstrap4, PostgreSQL
 
 ## Set Up
 
