@@ -13,11 +13,17 @@ This is a multiplayer card game web application. It currently supports only 2 pl
 5. login as a user of your choice, and select the appropriate game.
 
 ENV set-up:
+
 DB_HOST=localhost
+
 DB_USER='username'
+
 DB_PASS='password'
+
 DB_NAME='dbname'
+
 DB_SSL=true if heroku
+
 DB_PORT='port num'
 
 
