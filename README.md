@@ -12,6 +12,15 @@ This is a multiplayer card game web application. It currently supports only 2 pl
 4. In two seperate browser types (IE,FIREFOX,CHROME,CHROME INCOGNITO) connect to the host site at localhost:8080.
 5. login as a user of your choice, and select the appropriate game.
 
+ENV set-up:
+DB_HOST=localhost
+DB_USER=<username>
+DB_PASS=<password>
+DB_NAME=<dbname>
+DB_SSL=true if heroku
+DB_PORT=<PORT NUM>
+
+
 You'll notice a score board and player history board after login. These will update as the games are platyed.
 
 ## Games
