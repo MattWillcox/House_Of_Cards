@@ -14,11 +14,11 @@ This is a multiplayer card game web application. It currently supports only 2 pl
 
 ENV set-up:
 DB_HOST=localhost
-DB_USER=<username>
-DB_PASS=<password>
-DB_NAME=<dbname>
+DB_USER='username'
+DB_PASS='password'
+DB_NAME='dbname'
 DB_SSL=true if heroku
-DB_PORT=<PORT NUM>
+DB_PORT='port num'
 
 
 You'll notice a score board and player history board after login. These will update as the games are platyed.
